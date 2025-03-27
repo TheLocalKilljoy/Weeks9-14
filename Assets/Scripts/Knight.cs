@@ -7,6 +7,10 @@ public class Knight : MonoBehaviour
     SpriteRenderer spr;
     Animator animator;
 
+    public AudioSource audios;
+
+    public AudioClip[] clips;
+
     public bool canRun = true;
 
     public float speed = 2;
@@ -43,8 +47,13 @@ public class Knight : MonoBehaviour
 
     public void AttackEnd()
     {
-        Debug.Log("attack is finished");
-
         canRun = true;
-    }    
+    }
+
+    public void Footstep()
+    { 
+        int randomNum = Random.Range(0, clips.Length);
+
+        audios.PlayOneShot(clips[randomNum]);
+    }
 }

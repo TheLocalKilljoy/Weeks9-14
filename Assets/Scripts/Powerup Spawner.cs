@@ -6,22 +6,30 @@ public class PowerupSpawner : MonoBehaviour
 {
     public GameObject powerUp;
 
+    float timer;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(SpawnTimer());
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 pos = new Vector2 (Random.Range(0, Screen.width), Random.Range(0,Screen.height));
+    }
+
+    IEnumerator SpawnTimer()
+    {
+        Vector2 pos = new Vector2(Random.Range(30, Screen.width-30), Random.Range(30, Screen.height-30));
 
         Vector2 screenPos = Camera.main.ScreenToWorldPoint(pos);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        while (timer < Random.Range(2,6))
         {
-            Instantiate(powerUp, screenPos, Quaternion.identity);
+            timer += Time.deltaTime;
+            yield return null;
         }
+        Instantiate(powerUp, screenPos, Quaternion.identity);
     }
 }

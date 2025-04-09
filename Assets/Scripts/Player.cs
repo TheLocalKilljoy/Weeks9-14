@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     float speed = 10;
-
-    bool hasItem = false; 
 
     // Start is called before the first frame update
     void Start()
@@ -67,10 +67,5 @@ public class Player : MonoBehaviour
                 transform.localPosition = pos;
             }
         }
-    }
-
-    void Attack()
-    {
-        
     }
 }
